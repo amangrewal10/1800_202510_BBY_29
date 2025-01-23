@@ -59,7 +59,7 @@ project-name/
 
 ## Contributors
 - **Amanpreet Grewal** - BCIT CST Student with a passion for making something unique and useful that can help growing communities.
-- Justin Yu - BCIT CST Student. Fun fact: Enjoys laying in bed(while doing work though).
+- **Justin Yu** - BCIT CST Student. Fun fact: Enjoys laying in bed(while doing work though).
 - **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
 ---
