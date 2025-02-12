@@ -1,1 +1,54 @@
+:root {
+    --color-1: beige;
+    --color-2: burlywood;
+    --color-text-link: black;
+    --color-text-link-hover: black;
+    --color-bg-link-hover: #FBCEB1;
+    --color-text-link-active: white;
+    --color-bg-link-active: #97233F;
+  }
 
+.navigation > ul {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    list-style-type: none;
+    background-color: var(--color-1);
+    margin: 0;
+    padding: 10px 0;
+}
+
+.navigation > ul > li {
+    margin: 10px auto;
+    width: 28%;
+
+}
+
+.navigation li>a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: var(--color-2);
+    color: var(--color-text-link);
+    border-radius: 15px;
+    text-align: center;
+    display: block;
+}
+
+.navigation li>a:visited {  
+    color: var(--color-text-link);   
+}
+
+.navigation li>a:hover {
+    color: var(--color-text-link-hover);
+    background-color: var(--color-bg-link-hover);
+    
+}
+
+.navigation li>a:active {
+    color: var(--color-text-link-active);
+    background-color: var(--color-bg-link-active);
+    
+}
