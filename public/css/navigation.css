@@ -1,0 +1,18 @@
+#navbarPlaceholder, #footerPlaceholder {
+    width: 100%;
+}
+.collapsing {     
+    transition: 0.2s;     
+}
+
+.navbar-nav {
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+@media only screen and (min-width: 576px) {
+    .fixed-bottom {
+        position: relative;
+        flex-direction: row-reverse;
+    }
+}
