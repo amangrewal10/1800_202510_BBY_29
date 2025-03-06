@@ -8,6 +8,8 @@ app.use("/css", express.static("./public/css"));
 app.use("/img", express.static("./public/img"));
 app.use("/text", express.static("./public/text"));
 app.use("/fonts", express.static("./public/css/fonts"));
+app.use("/home", express.static("./app/html/index.html"));
+app.use("/setup-form", express.static("./app/html/setup_form.html"));
 
 app.get("/", function(req, res) {
     //console.log(process.env);
