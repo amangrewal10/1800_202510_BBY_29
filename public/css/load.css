@@ -1,8 +1,9 @@
-#navbarPlaceholder, #footerPlaceholder {
-    width: 100%;
-}
 .collapsing {     
     transition: 0.2s;     
+}
+
+.navbar {
+    padding: 10px;
 }
 
 .navbar-nav {
@@ -14,5 +15,11 @@
     .fixed-bottom {
         position: relative;
         flex-direction: row-reverse;
+    } 
+
+    #navbarPlaceholder, #footerPlaceholder {
+        width: 80%;
+        margin: auto;
+        padding: 0;
     }
 }
