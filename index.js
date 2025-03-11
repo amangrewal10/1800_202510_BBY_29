@@ -14,6 +14,7 @@ app.use("/workshops", express.static("./app/html/workshops.html"));
 app.use("/setup-form", express.static("./app/html/setup_form.html"));
 app.use("/upcoming", express.static("./app/html/upcoming_workshops.html"));
 
+
 app.get("/", function(req, res) {
     //console.log(process.env);
     // retrieve and send an HTML document from the file system
