@@ -13,6 +13,7 @@ app.use("/login", express.static("./app/html/login.html"));
 app.use("/workshops", express.static("./app/html/workshops.html"));
 app.use("/setup-form", express.static("./app/html/setup_form.html"));
 app.use("/upcoming", express.static("./app/html/upcoming_workshops.html"));
+app.use("/Profile", express.static("./app/html/profile_page1.html"));
 
 
 app.get("/", function(req, res) {
