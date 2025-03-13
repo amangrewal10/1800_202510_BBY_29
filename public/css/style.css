@@ -20,6 +20,36 @@ html, body {
     background-color: #f5f5f5; /* Light background for contrast */
 }
 
+#banner-image-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    height: 0;
+    padding-top: calc(100% * (80 / 300));
+}
+
+#banner-image {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo {
+    width: 120px;
+}
+
+#main-profile-section {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#main-profile-section > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .hero {
     display: flex;
@@ -53,6 +83,15 @@ html, body {
 
 #form-textarea {
     max-height: 200px;
+}
+
+.workshop-container {
+    margin: auto;
+    width: 80%;
+}
+
+#workshopGroup {
+    padding: 10px;
 }
 
 /* @media only screen and (max-width: 1000px) {
