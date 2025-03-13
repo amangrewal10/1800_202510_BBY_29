@@ -27,5 +27,4 @@ function displayWorkshops() {
             });
         })
 }
-
 displayWorkshops();
