@@ -53,22 +53,25 @@
 
     <!--Profile Section -->
     <div class="mb-4">
-      <h5 class="fw-bold">Public Profile</h5>
+     
       <div class="bg-light p-3 rounded text-center">
       
-        <p>Joined
-          <span class="text-muted mb-1" id="profileJoined">N/A</span>
-        </p>
-        <div class="d-flex justify-content-around mt-3">
-          <span><strong> Questions answered correctly: <p class="text-muted mb-1" id="profileScore">Score: 0</p></strong></span>
-
-          <span><strong>Total XP:<p class="text-muted mb-1" id="profileXp">XP: 0</p>
-          </strong> </span>
+        <h4>Experience</h4>
+        <p class="text-muted mb-1" id="userExperience">No experience details available.</p>
+    </div>
+    
+    <div class="mt-4">
+        <h4>Workshops Hosted</h4>
+        <ul class="list-group" id="workshopsHosted">
+            <li class="list-group-item">No workshops hosted yet.</li>
+        </ul>
         </div>
         <div class="bg-light p-3 rounded text-center">
           <p>Email: <span id="profileEmail">email@email.ca</span></p>
-          <button class="btn btn-outline-secondary btn-sm w-100" onclick="window.location.href='index.html'">Log out</button>
-        </div>
+          <p>Phone: <span id="profilePhone">123-456-7890</span></p>
+          <p>LinkedIn: <a href="#" id="profileLinkedIn">linkedin.com/in/username</a></p>
+          <button class="btn btn-outline-secondary btn-sm w-100 mt-2" onclick="window.location.href='index.html'">Log out</button>
+      </div>
       </div>
     </div>
 
