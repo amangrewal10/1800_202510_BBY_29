@@ -28,39 +28,48 @@
     <!-- Navigation Bar -->
     <header id="navbarPlaceholder"></header>
     <!-- Content -->
-    <form id="form-setup">
-        <div class="row">
-            <div class="col">
-                <p>Personal Information</p>
+    <form id="form-setup" class="p-4 border rounded shadow-sm bg-light">
+        <h2 class="text-center mb-4">Setup Workshop</h2>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="pref-name" class="form-label">Preferred Name</label>
                 <input type="text" name="pref-name" class="form-control required" placeholder="Preferred Name">
             </div>
-            <div class="col">
-                <p>Workshop Details</p>
+            <div class="col-md-6">
+                <label for="topic" class="form-label">Workshop Topic</label>
                 <input type="text" name="topic" class="form-control required" placeholder="Topic">
             </div>
-            <div class="col">
-                <p>Date/Time</p>
-                <input type="date" name="date" class="form-control required" placeholder="Date">
-            </div>           
         </div>
-        <div class="row">
-            <div class="col">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" name="date" class="form-control required">
+            </div>
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" class="form-control required" placeholder="Email">
             </div>
-            <div class="col">
-                <textarea id="form-textarea" name="summary" class="form-control required" placeholder="Quick Summary..."></textarea>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label for="summary" class="form-label">Quick Summary</label>
+                <textarea id="form-textarea" name="summary" class="form-control required" rows="3" placeholder="Quick Summary..."></textarea>
             </div>
-            <div class="col">
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="duration-start" class="form-label">Start Time</label>
                 <input type="time" name="duration-start" class="form-control required">
-                <p>to</p>
+            </div>
+            <div class="col-md-6">
+                <label for="duration-end" class="form-label">End Time</label>
                 <input type="time" name="duration-end" class="form-control required">
-            </div>           
+            </div>
         </div>
         <div class="row">
-            <div class="col">
-                <input type="submit" value="Submit Form">   
+            <div class="col text-center">
+                <input type="submit" value="Submit Form" class="btn btn-primary btn-lg">
             </div>
-                 
         </div>
     </form>
     <!-- Footer -->
