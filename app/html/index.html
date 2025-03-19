@@ -4,10 +4,7 @@
 <head>
 
     <Style>
-        #specificImage {
-        width: 200px;
-        height: 200px;
-    }
+       
     </Style>
     <title>SkillRelay</title>
     <meta name="comp1800 template" content="SkillRelay">
@@ -28,25 +25,41 @@
     <!-- Navigation Bar -->
     <header id="navbarPlaceholder"></header>
     <!-- Content -->
-    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
-        <div class="row align-items-center g-lg-5 py-5">
-            <div class="col-lg-95 text-center text-lg-start">
-                <section class="hero">
-                    <h1>Welcome to SkillRelay</h1>
-                    <p> Empower, learn, and relay your skills to the world.</p>
-                </section>
-            </div>
-            <div class="col-md-10 mx-auto col-lg-5">
-                <div class="register-form text-center py-5">
-                   
-                    <div class="rounded-circle overflow-hidden">
-                        <img id= "specificImage" class="responsive" src="img/skillrelay.png" alt="">
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to SkillRelay</h1>
+            <p>Empower, learn, and relay your skills to the world.</p>
+            <a href="login" class="btn btn-warning btn-cta">Sign In / Register</a>
+        </div>
+    </section>
+    <section class="features-section bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Why Choose SkillRelay?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card text-center p-4">
+                        <img src="img/feature1.png" alt="Feature 1" class="img-fluid mb-3" style="width: 80px;">
+                        <h5>Learn New Skills</h5>
+                        <p>Join workshops hosted by experts and enhance your knowledge.</p>
                     </div>
-                    <a href="login" class="btn btn-warning" role="button">Sign in/Register</a>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card text-center p-4">
+                        <img src="img/feature2.png" alt="Feature 2" class="img-fluid mb-3" style="width: 80px;">
+                        <h5>Host Workshops</h5>
+                        <p>Share your expertise and connect with a global audience.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card text-center p-4">
+                        <img src="img/feature3.png" alt="Feature 3" class="img-fluid mb-3" style="width: 80px;">
+                        <h5>Build Your Network</h5>
+                        <p>Collaborate with like-minded individuals and grow your community.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- Footer -->
     <footer id="footerPlaceholder" class="container content mt-9"></footer>
     <!-- Bootstrap JS CDN -->
