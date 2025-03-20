@@ -16,6 +16,8 @@ app.use("/upcoming", express.static("./app/html/upcoming_workshops.html"));
 app.use("/profile", express.static("./app/html/profile.html"));
 app.use("/review", express.static("./app/html/review.html"));
 app.use("/main", express.static("./app/html/main.html"));
+app.use("/favourites", express.static("./app/html/favourite_workshops.html"));
+
 
 
 app.get("/", function(req, res) {
