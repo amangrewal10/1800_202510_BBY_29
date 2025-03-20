@@ -29,7 +29,7 @@
     } 
 
     #navbarPlaceholder, #footerPlaceholder {
-        width: 80%;
+        width: 100%;
         margin: auto;
         padding: 0;
     }
@@ -40,4 +40,9 @@
         box-shadow: 4px 4px 2px #43413C;
         border: solid 2px #43413C;
     }
+    #navbarPlaceholder, #footerPlaceholder {
+        width: 80%;
+        margin: 50px auto;
+    }
+
 }
