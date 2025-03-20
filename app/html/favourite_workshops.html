@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Favourite Workshops</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header id="navbarPlaceholder"></header>
+    
+    <div class="container mt-4">
+        <h1>Favourite Workshops</h1>
+        <div id="favouriteWorkshopGroup" class="row row-cols-1 row-cols-md-3 g-4"></div>
+    </div>
+    
+    <!-- Template for Favorite Workshop Card -->
+    <template id="favouriteWorkshopTemplate">
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title w_topic">Workshop Topic</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Hosted by <span class="w_name_email"></span></h6>
+                    <p class="card-text">
+                        <small>Date: <span class="w_date"></span><br>
+                        Time: <span class="w_time_start"></span> - <span class="w_time_end"></span></small>
+                    </p>
+                    <p class="card-text w_summary">Summary goes here</p>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Footer -->
+    <footer id="footerPlaceholder" class="container mt-4"></footer>
+    
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/firebaseAPI_BBY29.js"></script>
+    <script src="js/favourite_workshops.js"></script>
+</body>
+</html>

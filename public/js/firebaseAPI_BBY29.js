@@ -2,7 +2,7 @@
 //  Your web app's Firebase configuration
 //----------------------------------------
 var firebaseConfig = {
-    apiKey: "AIzaSyCWhgO4QVvaujmCvvDpq8-ZJeboIifWvOA",
+  apiKey: "AIzaSyCWhgO4QVvaujmCvvDpq8-ZJeboIifWvOA",
   authDomain: "bbyteam29.firebaseapp.com",
   projectId: "bbyteam29",
   storageBucket: "bbyteam29.firebasestorage.app",
