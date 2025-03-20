@@ -30,35 +30,37 @@
     <!-- Content -->
     <form id="profile-setup" class="p-4 border rounded shadow-sm bg-light">
         <h2 class="text-center mb-4">Profile</h2>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" name="name" class="form-control required" placeholder="Name">
+        <fieldset id="profile-fields-info" disabled>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input id="profile-name" type="text" name="name" class="form-control required" placeholder="Name">
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="profile-email" type="email" name="email" class="form-control required" placeholder="Email">
+                </div>
             </div>
-            <div class="col-md-6">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control required" placeholder="Email">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="birthdate" class="form-label">Date of Birth</label>
+                    <input id="profile-birthdate" type="date" name="birthdate" class="form-control">
+                </div>
+                
             </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="birthdate" class="form-label">Date of Birth</label>
-                <input type="date" name="birthdate" class="form-control">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="introduction" class="form-label">Introduction</label>
+                    <textarea id="profile-intro" name="introduction" class="form-control required" rows="3" placeholder="About myself..."></textarea>
+                </div>
             </div>
-            
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-12">
-                <label for="introduction" class="form-label">Introduction</label>
-                <textarea id="form-textarea" name="introduction" class="form-control required" rows="3" placeholder="About myself..."></textarea>
-            </div>
-        </div>
+        </fieldset>
         <div class="row">
             <div class="col text-center">
-                <input type="button" value="Edit Profile" class="btn btn-primary btn-lg">
+                <input id="profile-edit" type="button" value="Edit Profile" class="btn btn-primary btn-lg">
             </div>
             <div class="col text-center">
-                <input type="submit" value="Save Profile" class="btn btn-primary btn-lg">
+                <input id="profile-save" type="button" value="Save Profile" class="btn btn-primary btn-lg">
             </div>
         </div>
     </form>
