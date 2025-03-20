@@ -21,7 +21,7 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #43413C; /* Light background for contrast */
+    /* background-color: #43413C; Light background for contrast */
 }
 
 #banner-image-container {

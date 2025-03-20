@@ -5,6 +5,7 @@
 .navbar {
     padding: 10px;
     border-radius: 15px;
+    
 }
 
 .navbar-brand {
@@ -31,5 +32,12 @@
         width: 80%;
         margin: auto;
         padding: 0;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar {
+        box-shadow: 4px 4px 2px #43413C;
+        border: solid 2px #43413C;
     }
 }
