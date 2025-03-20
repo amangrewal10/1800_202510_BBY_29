@@ -46,13 +46,11 @@ function editUserInfo() {
 }
 
 function saveUserInfo() {
-    //enter code here
-
     //a) get user entered values
-    userName = document.getElementById('profile-name').value;       //get the value of the field with id="nameInput"
-    userEmail = document.getElementById('profile-email').value;     //get the value of the field with id="schoolInput"
+    userName = document.getElementById('profile-name').value;       
+    userEmail = document.getElementById('profile-email').value;     
     userBirthDate = document.getElementById('profile-birthdate').value;
-    userIntro = document.getElementById('profile-intro').value;        //get the value of the field with id="cityInput"
+    userIntro = document.getElementById('profile-intro').value;        
     //b) update user's document in Firestore
     currentUser.update({
         name: userName,
