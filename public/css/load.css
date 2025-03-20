@@ -4,6 +4,16 @@
 
 .navbar {
     padding: 10px;
+    border-radius: 15px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand > * {
+    margin: 10px;
 }
 
 .navbar-nav {

@@ -7,9 +7,10 @@
     --color-bg-link-hover: #FBCEB1;
     --color-text-link-active: white;
     --color-bg-link-active: #97233F; */
-    /* #F18B0E */
-    /* #43413C */
-    /* #F0DE39 */
+    /* #F18B0E orange */
+    /* #43413C grey */
+    /* #F0DE39 yellow */
+    /* #f8f9fa white */
 
     /* this is for later so we can keep track of styles and stay consistent, the colors are unimportant right now */
   }
@@ -20,7 +21,7 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #f5f5f5; /* Light background for contrast */
+    background-color: #43413C; /* Light background for contrast */
 }
 
 #banner-image-container {
@@ -41,6 +42,7 @@ html, body {
 
 .logo {
     width: 120px;
+    margin: 10px;
 }
 
 #main-profile-section {
@@ -60,8 +62,9 @@ html, body {
     align-items: center;
     justify-content: center;
     height: 150px; /* Adjust based on preference */
-    background: linear-gradient(135deg, burlywood, beige);
-    color: white;
+    /* background: linear-gradient(135deg, burlywood, beige); */
+    background-color: #f8f9fa;
+    color: #43413C;
     text-align: center;
     padding: 50px;
     border-radius: 10px;
