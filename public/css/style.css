@@ -127,3 +127,14 @@ html, body {
 /* @media only screen and (max-width: 1000px) {
     
 } */
+
+.star {
+    font-size: 2.5rem; /* Adjust the size of the stars */
+    cursor: pointer; /* Change the cursor to a pointer for interactivity */
+    color: #d3d3d3; /* Default color for unselected stars (light gray) */
+}
+
+.star.selected {
+    color: #007bff; /* Gold color for selected stars */
+}
+
