@@ -38,21 +38,18 @@
                 </div>
             </div>
         </div>
-        <div id="main-profile-section" class="col">
-            <div>
-                <a href="Profile"><img class="logo" src="img/profile.png" alt="profile picture"></a>
-                <a href="#">My workshops</a>
-                <a href="#">My reviews</a>
-            </div>
-        </div>
+     
     </div>
     <template id="workshopTemplate">
-        <div>
-            <div class="row">
-                <p><span class="w_topic">placeholder</span>, hosted by <span class="w_name_email"></span></p>
-            </div>
-            <div class="row">
-                <p>Date: <span class="w_date"></span> from <span class="w_time_start"></span> to <span class="w_time_end"></span></p> 
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title w_topic">Workshop Topic</h5>
+                <p class="card-text">
+                    Hosted by <span class="w_name_email"></span>
+                </p>
+                <p class="card-text">
+                    Date: <span class="w_date"></span> from <span class="w_time_start"></span> to <span class="w_time_end"></span>
+                </p>
             </div>
         </div>
     </template>

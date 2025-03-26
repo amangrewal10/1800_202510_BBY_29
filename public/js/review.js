@@ -43,7 +43,10 @@ function getSelectedRating() {
 }
 
 // Function to handle star click events
+<<<<<<< HEAD
 // Function to handle star click events
+=======
+>>>>>>> origin/test
 $(document).ready(function () {
     $(".star").on("click", function () {
         const index = $(this).index(); // Get the index of the clicked star
@@ -57,5 +60,9 @@ $(document).ready(function () {
             }
         });
     });
+<<<<<<< HEAD
 });
 
+=======
+});
+>>>>>>> origin/test
