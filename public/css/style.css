@@ -13,9 +13,10 @@
     /* #f8f9fa white */
 
     /* this is for later so we can keep track of styles and stay consistent, the colors are unimportant right now */
-  }
+}
 
-html, body {
+html,
+body {
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -29,6 +30,7 @@ html, body {
     margin: auto;
     height: 0;
     padding-top: calc(100% * (80 / 300));
+
 }
 
 #banner-image {
@@ -37,6 +39,7 @@ html, body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 15px;
 }
 
 .logo {
@@ -49,7 +52,7 @@ html, body {
     justify-content: flex-end;
 }
 
-#main-profile-section > div {
+#main-profile-section>div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,7 +69,8 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 150px; /* Adjust based on preference */
+    height: 150px;
+    /* Adjust based on preference */
     /* background: linear-gradient(135deg, burlywood, beige); */
     background-color: #f8f9fa;
     /* color: #43413C; */
@@ -123,6 +127,31 @@ html, body {
 #workshopGroup {
     padding: 10px;
 }
+
+.star {
+    font-size: 2.5rem;
+    /* Adjust the size of the stars */
+    cursor: pointer;
+    /* Change the cursor to a pointer for interactivity */
+    color: #d3d3d3;
+    /* Default color for unselected stars (light gray) */
+}
+
+.star.selected {
+    color: #007bff;
+  
+}
+
+.star.selected {
+    color: #007bff;
+    /* Blue color for selected stars */
+}
+.star.hover {
+    color: #007bff;
+    
+}
+
+
 
 /* @media only screen and (max-width: 1000px) {
     

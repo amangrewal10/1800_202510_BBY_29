@@ -79,7 +79,7 @@ $("#form-setup").submit(function( event ) {
             duration_start: durationStart,
             duration_end: durationEnd
         }).then(() => {
-            window.location.href = "home";
+            window.location.href = "main";
         });
     }
 });
