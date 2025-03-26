@@ -11,7 +11,7 @@ function populateUserProfile() {
                         .then(userDoc => {
                             //get the data fields of the user
                             let name = userDoc.data().name;
-                            let email = userDoc.data().email;z
+                            let email = userDoc.data().email;
                             let birthdate = userDoc.data().birthdate;
                             let introduction = userDoc.data().introduction;
 
