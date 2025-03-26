@@ -22,15 +22,22 @@
     justify-content: space-around;
 }
 
-.nav-link {
-    transition: 0.4s;
-    border-bottom: 1.5px solid transparent;
-    padding: 0px;
-    margin: 0 5px;
+.nav-link { 
+    /* border-bottom: 1.5px solid transparent; */
+    /* padding: 0px; */
+    /* margin: 0 5px; */
 }
-.nav-link:hover {
+/* .nav-link:hover {
     border-color: black;
-    
+} */
+
+.hover-style {
+    color: transparent;
+    transition: 0.4s;
+}
+
+.nav-link:hover > .hover-style {
+    color: black;
 }
 
 @media only screen and (min-width: 576px) {
