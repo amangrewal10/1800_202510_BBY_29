@@ -33,20 +33,23 @@
     </div>
 
     <!-- Workshop Template with Favorite Button -->
-    <template id="workshopTemplate">
+   <template id="workshopTemplate">
         <div class="col">
             <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title w_topic">Workshop Topic</h5>
                     <p class="card-text">
-                        Hosted by <span class="w_name_email"></span><br>
+                        Hosted by <span class="w_name"></span><br>
                         Date: <span class="w_date"></span><br>
                         Time: <span class="w_time_start"></span> - <span class="w_time_end"></span>
                     </p>
                     <p class="card-text w_summary">Summary goes here</p>
                 </div>
+                
                 <div class="card-footer text-end">
-                    <a href="workshop-details">Details></a>
+                    <button class="btn btn-primary details-btn" onclick="window.location.href='workshop_details.html'">
+                        <i class="bi bi-info-circle"></i> Details
+                    </button>
                     <button class="btn btn-outline-danger favorite-btn" data-id="">
                         <i class="bi bi-heart"></i> Favorite
                     </button>

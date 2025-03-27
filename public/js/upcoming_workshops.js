@@ -24,6 +24,9 @@ function displayWorkshops() {
                 if (workshop.querySelector(".w_name_email")) {
                     workshop.querySelector(".w_name_email").innerHTML = `${name} (${email})`;
                 }
+                if (workshop.querySelector(".w_name")) {
+                    workshop.querySelector(".w_name").innerHTML = name;
+                }
                 if (workshop.querySelector(".w_topic")) {
                     workshop.querySelector(".w_topic").innerHTML = topic;
                 }
