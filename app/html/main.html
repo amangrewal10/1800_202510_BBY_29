@@ -1,64 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>SkillRelay</title>
-    <meta name="comp1800 template" content="SkillRelay">
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap Library CSS CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/load.css">
+  <title>SkillRelay</title>
+  <meta name="comp1800 template" content="SkillRelay">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap Library CSS CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/load.css">
 </head>
-
 <body>
-    <!-- Navigation Bar -->
-    <header id="navbarPlaceholder"></header>
-    <!-- Content -->
-    <div id="banner-image-container">
-        <img id="banner-image" src="img/banner.jpg" alt="placeholder">
+  <!-- Navigation Bar -->
+  <header id="navbarPlaceholder"></header>
+
+  <!-- Banner / Hero Image -->
+  <div id="banner-image-container" class="mb-4">
+    <img id="banner-image" src="img/banner.jpg" alt="Banner Image" class="img-fluid w-100">
+  </div>
+
+  <!-- Navigation Buttons (Horizontal layout below the banner) -->
+  <div class="container my-4">
+    <div class="d-flex justify-content-center">
+      <a href="/workshops" class="btn btn-primary mx-2">My Workshops</a>
+      <a href="/favourites" class="btn btn-primary mx-2">Favorite Workshops</a>
+      <a href="/review" class="btn btn-secondary mx-2">Write Review</a>
+      <a href="/upcoming" class="btn btn-info mx-2">Upcoming Workshops</a>
     </div>
-    <div class="workshop-container row">
-        <div class="col-7">
-            <h2>Upcoming Workshops</h2>
-            <div id="workshopGroup"></div>
+  </div>
+
+  <!-- Upcoming Workshops Section -->
+  <div class="container my-4">
+    <h2 class="text-center mb-4">Upcoming Workshops</h2>
+    <div id="workshopGroup" class="row row-cols-1 row-cols-md-2 g-4"></div>
+  </div>
+
+  <!-- Workshop Template (Same as in upcoming_workshops.html) -->
+  <template id="workshopTemplate">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title w_topic">Workshop Topic</h5>
+          <p class="card-text">
+            Hosted by <span class="w_name"></span><br>
+            Date: <span class="w_date"></span><br>
+            Time: <span class="w_time_start"></span> - <span class="w_time_end"></span>
+          </p>
+          <p class="card-text w_summary">Summary goes here</p>
         </div>
-                </div>
-            </div>
+        <div class="card-footer text-end">
+          <a href="workshop-details" class="details-btn">Details&gt;</a>
+          <button class="btn btn-outline-danger favorite-btn" data-id="">
+            <i class="bi bi-heart"></i> Favorite
+          </button>
         </div>
-     
+      </div>
     </div>
-    <template id="workshopTemplate">
-        <div class="card mb-3 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title w_topic">Workshop Topic</h5>
-                <p class="card-text">
-                    Hosted by <span class="w_name"></span>
-                </p>
-                <p class="card-text">
-                    Date: <span class="w_date"></span> <br> from <span class="w_time_start"></span> to <span class="w_time_end"></span>
-                </p>
-            </div>
-        </div>
-    </template>
-    
-    <!-- Footer -->
-    <footer id="footerPlaceholder" class="container content mt-9"></footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/firebaseAPI_BBY29.js"></script>
-    <script src="js/load.js"></script>
-    <script src="js/upcoming_workshops.js"></script>
+  </template>
+
+  <!-- Footer -->
+  <footer id="footerPlaceholder" class="container mt-4"></footer>
+
+  <!-- Bootstrap JS and Custom Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/firebaseAPI_BBY29.js"></script>
+  <script src="js/load.js"></script>
+  <script src="js/upcoming_workshops.js"></script>
 </body>
 </html>
