@@ -52,46 +52,99 @@ function logout() {
 
 if (document.querySelector(".workshop-details")) {
     const workshopID = new URLSearchParams(window.location.search).get("id");
-    const docRef = db.collection("workshops").doc(workshopID);
-    console.log(docRef.email);
-    docRef.get()
-        .then( wDoc => {
-            let topic = String(wDoc.data().topic).charAt(0).toUpperCase() + String(wDoc.data().topic).slice(1);
-            let name = String(wDoc.data().preferred_name).charAt(0).toUpperCase() + String(wDoc.data().preferred_name).slice(1);
-            let email = wDoc.data().email;
-            // let date = wDoc.data().date;
-            // var year = wDoc.data().date.split("-")[0],
-            //     month = wDoc.data().date.split("-")[1],
-            //     day = wDoc.data().date.split("-")[2];
-            // let date = new Date( year, month, day);
-            let date = new Date(wDoc.data().date);
-            const options = {
-                weekday: "long",
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-            };
-            // options.timeZone = "UTC";
-            // options.timeZoneName = "short";
-            let time = wDoc.data().duration_start + "-" + wDoc.data().duration_end;
-            let summary = wDoc.data().summary;
-            if (document.querySelector(".w_topic")) {
-                document.querySelector(".w_topic").innerHTML = `${topic}`;
-            }
-            if (document.querySelector(".w_name_email")) {
-                document.querySelector(".w_name_email").innerHTML = `${name}(${email})`;
-            }
-            if (document.querySelector(".w_date")) {
-                document.querySelector(".w_date").innerHTML = `${date.toLocaleDateString("en-US", options)}`;
-            }
-            if (document.querySelector(".w_time")) {
-                document.querySelector(".w_time").innerHTML = `${time}`;
-            }
-            if (document.querySelector(".w_summary")) {
-                document.querySelector(".w_summary").innerHTML = `${summary}`;
-            }
+    console.log("Workshop ID:", workshopID); // Log the workshop ID for debugging
 
-        })
-    
+    if (!workshopID) {
+        console.error("No workshop ID provided in the URL.");
+        document.querySelector(".workshop-details").innerHTML = `
+            <p class="text-danger">No workshop ID provided. Please check the URL and try again.</p>
+        `;
+    } else {
+        const docRef = db.collection("workshops").doc(workshopID);
 
+        docRef.get()
+            .then(wDoc => {
+                if (!wDoc.exists) {
+                    console.error("Workshop not found!");
+                    console.log("Workshop ID used:", workshopID); // Log the ID for debugging
+                    document.querySelector(".workshop-details").innerHTML = `
+                        <p class="text-danger">Workshop details could not be loaded. The workshop may no longer exist.</p>
+                    `;
+                    return;
+                }
+
+                let topic = String(wDoc.data().topic).charAt(0).toUpperCase() + String(wDoc.data().topic).slice(1);
+                let name = String(wDoc.data().preferred_name).charAt(0).toUpperCase() + String(wDoc.data().preferred_name).slice(1);
+                let email = wDoc.data().email;
+                let date = new Date(wDoc.data().date);
+                const options = {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                };
+                let time = wDoc.data().duration_start + "-" + wDoc.data().duration_end;
+                let summary = wDoc.data().summary;
+
+                if (document.querySelector(".w_topic")) {
+                    document.querySelector(".w_topic").innerHTML = `${topic}`;
+                }
+                if (document.querySelector(".w_name_email")) {
+                    document.querySelector(".w_name_email").innerHTML = `${name}(${email})`;
+                }
+                if (document.querySelector(".w_date")) {
+                    document.querySelector(".w_date").innerHTML = `${date.toLocaleDateString("en-US", options)}`;
+                }
+                if (document.querySelector(".w_time")) {
+                    document.querySelector(".w_time").innerHTML = `${time}`;
+                }
+                if (document.querySelector(".w_summary")) {
+                    document.querySelector(".w_summary").innerHTML = `${summary}`;
+                }
+
+                // Fetch and display reviews for this workshop
+                db.collection("reviews")
+                    .where("workshop_id", "==", workshopID)
+                    .orderBy("timestamp", "desc")
+                    .get()
+                    .then((querySnapshot) => {
+                        const reviewsContainer = document.querySelector(".reviews-container");
+                        if (!reviewsContainer) {
+                            console.error("Reviews container not found in the DOM.");
+                            return;
+                        }
+                        reviewsContainer.innerHTML = ""; // Clear existing reviews
+                        if (querySnapshot.empty) {
+                            reviewsContainer.innerHTML = "<p>No reviews yet for this workshop.</p>";
+                            return;
+                        }
+                        querySnapshot.forEach((doc) => {
+                            const review = doc.data();
+                            console.log("Review fetched:", review); // Debugging log
+                            const reviewHTML = `
+                                <div class="review">
+                                    <h5>${review.review_title}</h5>
+                                    <p><strong>Rating:</strong> ${review.rating} / 5</p>
+                                    <p>${review.feedback}</p>
+                                    <small>Reviewed on: ${review.timestamp.toDate().toLocaleString()}</small>
+                                </div>
+                                <hr>
+                            `;
+                            reviewsContainer.innerHTML += reviewHTML;
+                        });
+                    })
+                    .catch((error) => {
+                        console.error("Error fetching reviews:", error);
+                        document.querySelector(".reviews-container").innerHTML = `
+                            <p class="text-danger">An error occurred while loading reviews. Please try again later.</p>
+                        `;
+                    });
+            })
+            .catch(error => {
+                console.error("Error fetching workshop details:", error);
+                document.querySelector(".workshop-details").innerHTML = `
+                    <p class="text-danger">An error occurred while loading the workshop details. Please try again later.</p>
+                `;
+            });
+    }
 }

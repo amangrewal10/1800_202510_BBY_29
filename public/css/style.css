@@ -179,3 +179,49 @@ body {
     color: #007bff; /* Gold color for selected stars */
 }
 
+/* Reviews Section Styling */
+.reviews-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-section h3 {
+    font-weight: bold;
+    color: #333;
+}
+
+.review-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.review-card .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.review-card .card-subtitle {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.review-card .card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.review-card footer {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+

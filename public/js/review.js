@@ -1,5 +1,7 @@
 // Handle form submission
 function writeReview() {
+    // Get workshop ID from URL
+    const workshopID = new URLSearchParams(window.location.search).get("id"); 
     // Get form values
     const workshopName = $("#WorkshopName").text(); // Workshop name from the span
     const reviewTitle = $("input[name='title']").val(); // Title input field
@@ -15,6 +17,7 @@ function writeReview() {
     // Reference Firestore `db` from firebaseAPI_BBY29.js
     db.collection("reviews")
         .add({
+            workshop_id: workshopID, // Associate review with workshop ID
             workshop_name: workshopName,
             review_title: reviewTitle,
             feedback: feedback,
@@ -23,7 +26,7 @@ function writeReview() {
         })
         .then(() => {
             alert("Thank you for your review!");
-            window.location.href = "main"; // Redirect to home or another page
+            window.location.href = `workshop-details?id=${workshopID}`; // Redirect back to workshop details
         })
         .catch((error) => {
             console.error("Error writing review to Firestore:", error);
