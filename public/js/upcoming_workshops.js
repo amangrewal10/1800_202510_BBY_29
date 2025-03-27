@@ -42,6 +42,10 @@ function displayWorkshops() {
                 if (workshop.querySelector(".w_time_end")) {
                     workshop.querySelector(".w_time_end").innerHTML = time_end;
                 }
+                // Details functionality
+                if (workshop.querySelector(".details-btn")) {
+                    workshop.querySelector(".details-btn").href = `workshop-details?id=${id}`;
+                }
                 // Handle favorite button functionality
                 const favButton = workshop.querySelector(".favorite-btn");
                 if (favButton) {

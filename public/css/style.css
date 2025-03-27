@@ -153,6 +153,18 @@ body {
 
 
 
+/* -----Setup Form page----- */
+#profile-setup {
+    width: 80%;
+    margin: auto;
+}
+
+/* -----Workshop Details page----- */
+.workshop-details {
+    width: 80%;
+    margin: auto;
+    padding: 50px;
+}
 /* @media only screen and (max-width: 1000px) {
     
 } */
