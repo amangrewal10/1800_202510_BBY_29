@@ -6,6 +6,7 @@ function displayWorkshops() {
     const favouriteWorkshops = JSON.parse(localStorage.getItem("favouriteWorkshops") || "[]");
 
     db.collection("workshops")
+        .orderBy("date")
         .get()
         .then((allWorkshops) => {
             allWorkshops.docs.forEach((doc) => {

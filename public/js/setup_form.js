@@ -79,7 +79,8 @@ $("#form-setup").submit(async function( event ) {
             email: email,
             summary: summary,
             duration_start: durationStart,
-            duration_end: durationEnd
+            duration_end: durationEnd,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
         }).then((docRef) => {
             currentUserWorkshops = currentUser.collection("created_workshops");
             currentUserWorkshops.add({

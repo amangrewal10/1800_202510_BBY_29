@@ -40,6 +40,83 @@
     color: black;
 }
 
+body {
+    padding-bottom: 60px; /* Add padding to prevent overlap with the fixed navbar */
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block; /* Show dropdown menu on hover */
+    margin-top: 0; /* Adjust positioning if needed */
+}
+
+/* Style the dropdown menu */
+.dropdown-menu {
+    background-color: #f8f9fa; /* Light background for the dropdown */
+    border: 1px solid #43413C; /* Add a border to match the navbar */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 10px 0; /* Add padding inside the dropdown */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    transform: translateY(-10px); /* Initial position for animation */
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Show dropdown menu on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Slide into place */
+}
+
+/* Style individual dropdown items */
+.dropdown-item {
+    color: #43413C; /* Text color */
+    padding: 8px 20px; /* Add padding to items */
+    font-size: 14px; /* Adjust font size */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+}
+
+.dropdown-item:hover {
+    background-color: #007bff; /* Highlight background on hover */
+    color: #ffffff; /* Change text color on hover */
+}
+
+/* Add spacing between dropdown items */
+.dropdown-item:not(:last-child) {
+    border-bottom: 1px solid #e9ecef; /* Divider between items */
+}
+
+/* Remove dropdown-indicator styles */
+.nav-item .dropdown-indicator {
+    display: none; /* Ensure no visual remnants of the dropdown sign */
+}
+
+@media only screen and (max-width: 576px) {
+    .navbar {
+        box-shadow: 4px 4px 2px #43413C; 
+        border: solid 1px #43413C;
+        padding: 3px; 
+        width: 90%; 
+        margin: 0 auto; 
+        bottom: 10px;
+    }
+    
+    #navbarPlaceholder, #footerPlaceholder {
+        width: 50px;
+        margin: auto;
+        padding: 0;
+    }
+
+    footer {
+        display: none; /* Hide footer in mobile view */
+    }
+
+    body {
+        padding-bottom: 70px; 
+    }
+}
+
 @media only screen and (min-width: 576px) {
     .fixed-bottom {
         position: relative;
@@ -62,5 +139,4 @@
         width: 80%;
         margin: 50px auto;
     }
-
 }
