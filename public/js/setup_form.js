@@ -32,16 +32,15 @@ function populateSetupForm() {
 populateSetupForm();
 
 
-$("#form-setup").submit(async function( event ) {
-    // If .required's value's length is zero(nothing in input)
-    if ( $(".required").val().length === 0 ) {
-        // Error message change later + add validation later
+$("#form-setup").submit(async function(event) {
+    // Check if any required input is empty
+    if ($(".required").val().length === 0) {
         console.log("enter name");
         event.preventDefault();
     } else {
         event.preventDefault();
         var fields = $(this).serializeArray();
-        // grab data from form
+        // Grab data from form
         for (field of fields) {
             console.log(field.name + " = " + field.value);
             switch (field.name) {
@@ -66,10 +65,12 @@ $("#form-setup").submit(async function( event ) {
                 case "duration-end":
                     var durationEnd = field.value;
                     break;
+                case "meeting-link":
+                    var meetingLink = field.value;
+                    break;
                 default:
                     console.log("big problem");
             }
-            
         }
 
         await db.collection("workshops").add({
@@ -80,6 +81,7 @@ $("#form-setup").submit(async function( event ) {
             summary: summary,
             duration_start: durationStart,
             duration_end: durationEnd,
+            meeting_link: meetingLink,  // Added meeting link field
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         }).then((docRef) => {
             currentUserWorkshops = currentUser.collection("created_workshops");
@@ -93,4 +95,4 @@ $("#form-setup").submit(async function( event ) {
         })
     }
 });
-    
+  
