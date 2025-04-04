@@ -34,15 +34,19 @@ populateSetupForm();
 
 $("#form-setup").submit(async function( event ) {
     // If .required's value's length is zero(nothing in input)
-    if ( $(".required").val().length === 0 ) {
-        // Error message change later + add validation later
-        console.log("enter name");
-        event.preventDefault();
-    } else {
-        event.preventDefault();
+    event.preventDefault();
+    const required = $(".required");
+    let valid = true;
+    required.each(function() {
+        if ($(this).val().length == 0) {
+            console.log(`${$(this).attr('name')} field is empty.`)
+            valid = false;
+        }
+    });
+    if (valid == true) {
         var fields = $(this).serializeArray();
         // grab data from form
-        for (field of fields) {
+        for (const field of fields) {
             console.log(field.name + " = " + field.value);
             switch (field.name) {
                 case "pref-name":

@@ -51,12 +51,6 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col-md-12">
-                <label for="summary" class="form-label">Quick Summary</label>
-                <textarea id="form-textarea" name="summary" class="form-control required" rows="3" placeholder="Quick Summary..."></textarea>
-            </div>
-        </div>
-        <div class="row mb-3">
             <div class="col-md-6">
                 <label for="duration-start" class="form-label">Start Time</label>
                 <input type="time" name="duration-start" class="form-control required">
@@ -64,6 +58,32 @@
             <div class="col-md-6">
                 <label for="duration-end" class="form-label">End Time</label>
                 <input type="time" name="duration-end" class="form-control required">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="summary" class="form-label">Quick Summary</label>
+                <textarea id="form-textarea" name="summary" class="form-control required" rows="3" placeholder="Quick Summary..."></textarea>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <p>Location</p>
+                </div>
+                <div>
+                    <input class="select_location" id="location_online" type="radio" name="select_location" value="online" checked="true">
+                    <label for="location_online" class="form-label">Online</label>
+                </div>
+                <div>
+                    <input class="select_location" id="location_physical" type="radio" name="select_location" value="physical">
+                    <label for="location_physical" class="form-label">In-person</label>
+                </div>
+            </div>
+            <div id="location_data" class="col-md-3"></div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label for="notes" class="form-label">Additional Notes</label>
+                <input id="setup-form-notes" type="text" name="notes" class="form-control" placeholder="Please be respectful...">
             </div>
         </div>
         <div class="row">

@@ -1,11 +1,11 @@
 function loadNavigation(){   
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            console.log($('#navbarPlaceholder').load('/text/header.html'));
-            console.log($('#footerPlaceholder').load('/text/footer.html'));  
+            $('#navbarPlaceholder').load('/text/header.html');
+            $('#footerPlaceholder').load('/text/footer.html');  
         }
         else {
-            console.log($('#footerPlaceholder').load('/text/footer.html'));    
+            $('#footerPlaceholder').load('/text/footer.html');    
         }
            
     }); 
@@ -22,20 +22,43 @@ function logout() {
 }
 // change to ajax later
 
-// function ajaxGET(url, callback) {
+function ajaxGET(url, callback) {
 
-//     const xhr = new XMLHttpRequest();
-//     xhr.onload = function() {
-//         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-//             callback(this.responseText);
-//             console.log(callback);
-//         } else {
-//             console.log(this.status);
-//         }
-//     }
-//     xhr.open("GET", url);
-//     xhr.send();
-// }
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+            callback(this.responseText);
+        } else {
+            console.log(this.status);
+        }
+    }
+    xhr.open("GET", url);
+    xhr.send();
+}
+
+function loadVariableFormData() {
+    if ($("#location_online")) {
+        let location = "";
+        if ($("input[name='select_location']:checked").val() == "online") {
+            location = "online";
+        } 
+        else if ($("input[name='select_location']:checked").val() == "physical") {
+            location = "physical";
+        }
+        ajaxGET(`/location_data?location=${location}`, function (data) {
+            document.getElementById("location_data").innerHTML = data;
+        })
+    }
+}
+loadVariableFormData();
+
+function buttonListener() {
+    const radio_location = document.querySelectorAll(".select_location");
+    for (radio of radio_location) {
+        radio.addEventListener("click", loadVariableFormData);
+    }
+}
+buttonListener();
 
 // if (document.querySelector(".workshop-details")) {
 //     ajaxGET("/att", function (data) {
