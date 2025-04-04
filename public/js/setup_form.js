@@ -32,16 +32,21 @@ function populateSetupForm() {
 populateSetupForm();
 
 
-$("#form-setup").submit(async function(event) {
-    // Check if any required input is empty
-    if ($(".required").val().length === 0) {
-        console.log("enter name");
-        event.preventDefault();
-    } else {
-        event.preventDefault();
+$("#form-setup").submit(async function( event ) {
+    // If .required's value's length is zero(nothing in input)
+    event.preventDefault();
+    const required = $(".required");
+    let valid = true;
+    required.each(function() {
+        if ($(this).val().length == 0) {
+            console.log(`${$(this).attr('name')} field is empty.`)
+            valid = false;
+        }
+    });
+    if (valid == true) {
         var fields = $(this).serializeArray();
-        // Grab data from form
-        for (field of fields) {
+        // grab data from form
+        for (const field of fields) {
             console.log(field.name + " = " + field.value);
             switch (field.name) {
                 case "pref-name":
