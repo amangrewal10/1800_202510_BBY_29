@@ -123,8 +123,8 @@ if (document.querySelector(".workshop-details")) {
                             console.log("Review fetched:", review); // Debugging log
                             const reviewHTML = `
                                 <div class="review">
-                                    <h5>${review.review_title}</h5>
-                                    <p><strong>Rating:</strong> ${review.rating} / 5</p>
+                                    <h3>${review.review_title}</h3>
+                                    <p class="stars">${review.stars}</p> <!-- Display stars -->
                                     <p>${review.feedback}</p>
                                     <small>Reviewed on: ${review.timestamp.toDate().toLocaleString()}</small>
                                 </div>

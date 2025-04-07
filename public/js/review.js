@@ -6,7 +6,9 @@ function writeReview() {
     const workshopName = $("#WorkshopName").text(); // Workshop name from the span
     const reviewTitle = $("input[name='title']").val(); // Title input field
     const feedback = $("#feedback").val(); // Feedback textarea
-    const rating = getSelectedRating(); // Get the selected star rating
+    const rating = getSelectedRating();
+    const starRepresentation = "★".repeat(rating) + "☆".repeat(5 - rating); // Generate star string
+
 
     // Validate form inputs
     if (!reviewTitle || !feedback || rating === 0) {
@@ -22,6 +24,7 @@ function writeReview() {
             review_title: reviewTitle,
             feedback: feedback,
             rating: rating, // Include the star rating
+            stars: starRepresentation,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         })
         .then(() => {
