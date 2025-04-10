@@ -52,7 +52,12 @@ app.use(function (req, res, next) {
 });
 
 // RUN SERVER
+
+
+let host = "192.168.1.69"; // Replace with your actual local IP address
 let port = 8000;
-app.listen(port, function () {
-    console.log("Example app listening on port " + port + "!");
+app.listen(port, host, function () {
+    console.log("Example app listening on " + host + ":" + port + "!");
 });
+
+//192.168.1.69
