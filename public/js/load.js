@@ -46,7 +46,9 @@ function loadVariableFormData() {
             location = "physical";
         }
         ajaxGET(`/location_data?location=${location}`, function (data) {
-            document.getElementById("location_data").innerHTML = data;
+            if ($("#location_data")) {
+                $("#location_data").html(data);
+            }
         })
     }
 }
