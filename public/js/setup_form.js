@@ -1,4 +1,6 @@
-var currentUser;               //points to the document of the user who is logged in
+var currentUser;              //points to the document of the user who is logged in\
+var currentUserWorkshops;
+var docRef;
 function populateSetupForm() {
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
@@ -30,16 +32,15 @@ function populateSetupForm() {
 populateSetupForm();
 
 
-$("#form-setup").submit(function( event ) {
-    // If .required's value's length is zero(nothing in input)
-    if ( $(".required").val().length === 0 ) {
-        // Error message change later + add validation later
+$("#form-setup").submit(async function(event) {
+    // Check if any required input is empty
+    if ($(".required").val().length === 0) {
         console.log("enter name");
         event.preventDefault();
     } else {
         event.preventDefault();
         var fields = $(this).serializeArray();
-        // grab data from form
+        // Grab data from form
         for (field of fields) {
             console.log(field.name + " = " + field.value);
             switch (field.name) {
@@ -64,23 +65,34 @@ $("#form-setup").submit(function( event ) {
                 case "duration-end":
                     var durationEnd = field.value;
                     break;
+                case "meeting-link":
+                    var meetingLink = field.value;
+                    break;
                 default:
                     console.log("big problem");
             }
-            
         }
-        // send data to database
-        db.collection("workshops").add({
+
+        await db.collection("workshops").add({
             preferred_name: prefName,
             topic: topic,
             date: date,
             email: email,
             summary: summary,
             duration_start: durationStart,
-            duration_end: durationEnd
+            duration_end: durationEnd,
+            meeting_link: meetingLink,  // Added meeting link field
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        }).then((docRef) => {
+            currentUserWorkshops = currentUser.collection("created_workshops");
+            currentUserWorkshops.add({
+                topic: topic,
+                date: date,
+                workshop_id: docRef.id
+            })
         }).then(() => {
-            window.location.href = "home";
-        });
+            window.location.href = "main";
+        })
     }
 });
-    
+  

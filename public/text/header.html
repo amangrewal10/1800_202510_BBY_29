@@ -1,18 +1,29 @@
 <nav class="navbar navbar-expand-sm fixed-bottom navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="main">Home</a>
-            <a class="nav-item nav-link" href="workshops">Workshops</a>
-            <a class="nav-item nav-link" href="setup-form">Setup Workshop</a>
-            <a class="nav-item nav-link" href="profile">Profile</a>
+            <a class="nav-item nav-link" href="main"><span class="hover-style">[</span>Home<span class="hover-style">]</span></a>
+            
+            <!-- Dropdown for Workshops -->
+            <div class="nav-item dropdown">
+                <a class="nav-link" href="#" id="workshopsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="hover-style">~</span>Workshops<span class="hover-style">~</span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="workshopsDropdown">
+                    <li><a class="dropdown-item" href="/favourites">Favorite Workshops</a></li>
+                    <li><a class="dropdown-item" href="/upcoming">Upcoming Workshops</a></li>
+                </ul>
+            </div>
+
+            <a class="nav-item nav-link" href="setup-form"><span class="hover-style">:</span>Setup Workshop<span class="hover-style">:</span></a>
+            <a class="nav-item nav-link" href="profile"><span class="hover-style">#</span>Profile<span class="hover-style">#</span></a>
+            <a class="nav-item nav-link" href="home" onclick="logout()"><span class="hover-style">/*</span>Logout<span class="hover-style">*/</span></a>
         </div>
     </div>
-    <a class="navbar-brand" href="home">
+    <a class="navbar-brand" href="main">
         <img src="img/logo-skill-relay.png" width="50" height="50" class="d-inline-block align-top" alt="logo">
-        Skill_Relay
+        Skill Relay
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    
 </nav>

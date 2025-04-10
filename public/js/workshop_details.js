@@ -2,15 +2,14 @@ function displayWorkshops() {
     const workshopTemplate = document.getElementById("workshopTemplate");
     const workshopGroup = document.getElementById("workshopGroup");
 
-    // Retrieve favorite and joined workshop IDs from localStorage (or empty arrays)
+    // Retrieve current favorite workshop IDs from localStorage (or empty array)
     const favouriteWorkshops = JSON.parse(localStorage.getItem("favouriteWorkshops") || "[]");
-    const joinedWorkshops = JSON.parse(localStorage.getItem("joinedWorkshops") || "[]");
 
     db.collection("workshops")
-        .orderBy("date")
+        .orderBy("createdAt", "desc")
         .get()
         .then((allWorkshops) => {
-            allWorkshops.docs.forEach((doc) => {
+            allWorkshops.docs.slice(0, 2).forEach((doc) => {
                 const id = doc.id;
                 const data = doc.data();
                 const name = data.preferred_name;
@@ -20,7 +19,6 @@ function displayWorkshops() {
                 const summary = data.summary;
                 const time_start = data.duration_start;
                 const time_end = data.duration_end;
-                const meetingLink = data.meeting_link;  // Retrieve the meeting link
 
                 let workshop = workshopTemplate.content.cloneNode(true);
                 // Update workshop card details
@@ -49,55 +47,27 @@ function displayWorkshops() {
                 if (workshop.querySelector(".details-btn")) {
                     workshop.querySelector(".details-btn").href = `workshop-details?id=${id}`;
                 }
-                // Set up the Join button functionality
-                if (workshop.querySelector(".join-btn")) {
-                    const joinButton = workshop.querySelector(".join-btn");
-                    if (meetingLink && meetingLink.trim() !== "") {
-                        // Set the join button link
-                        joinButton.href = meetingLink;
-                        // If this workshop is already marked as joined, update its appearance
-                        if (joinedWorkshops.includes(id)) {
-                            joinButton.classList.remove("btn-success");
-                            joinButton.classList.add("btn-secondary");
-                            joinButton.innerText = "Joined";
-                            joinButton.style.pointerEvents = "none"; // disable further clicks
-                        } else {
-                            // On click, mark the workshop as joined and update button styling
-                            joinButton.addEventListener("click", function() {
-                                let joined = JSON.parse(localStorage.getItem("joinedWorkshops") || "[]");
-                                if (!joined.includes(id)) {
-                                    joined.push(id);
-                                    localStorage.setItem("joinedWorkshops", JSON.stringify(joined));
-                                    // Change button appearance immediately
-                                    joinButton.classList.remove("btn-success");
-                                    joinButton.classList.add("btn-secondary");
-                                    joinButton.innerText = "Joined";
-                                    joinButton.style.pointerEvents = "none";
-                                }
-                            });
-                        }
-                    } else {
-                        // Hide the Join button if no meeting link is provided
-                        joinButton.style.display = "none";
-                    }
-                }
                 // Handle favorite button functionality
                 const favButton = workshop.querySelector(".favorite-btn");
                 if (favButton) {
                     favButton.setAttribute("data-id", id);
+                    // If this workshop is already a favorite, update button style
                     if (favouriteWorkshops.includes(id)) {
                         favButton.classList.remove("btn-outline-danger");
                         favButton.classList.add("btn-danger");
                         favButton.innerHTML = '<i class="bi bi-heart-fill"></i> Favorite';
                     }
-                    favButton.addEventListener("click", function() {
+                    // Attach click event to toggle favorite status
+                    favButton.addEventListener("click", function () {
                         let favs = JSON.parse(localStorage.getItem("favouriteWorkshops") || "[]");
                         if (favs.includes(id)) {
+                            // Remove favorite
                             favs = favs.filter(item => item !== id);
                             favButton.classList.remove("btn-danger");
                             favButton.classList.add("btn-outline-danger");
                             favButton.innerHTML = '<i class="bi bi-heart"></i> Favorite';
                         } else {
+                            // Add favorite
                             favs.push(id);
                             favButton.classList.remove("btn-outline-danger");
                             favButton.classList.add("btn-danger");
