@@ -40,10 +40,6 @@
     color: black;
 }
 
-body {
-    padding-bottom: 60px; /* Add padding to prevent overlap with the fixed navbar */
-}
-
 .nav-item.dropdown:hover .dropdown-menu {
     display: block; /* Show dropdown menu on hover */
     margin-top: 0; /* Adjust positioning if needed */
@@ -78,7 +74,7 @@ body {
 }
 
 .dropdown-item:hover {
-    background-color: #007bff; /* Highlight background on hover */
+    background-color: #43413C; /* Highlight background on hover */
     color: #ffffff; /* Change text color on hover */
 }
 
@@ -94,7 +90,7 @@ body {
 
 @media only screen and (max-width: 576px) {
     .navbar {
-        box-shadow: 4px 4px 2px #43413C; 
+        box-shadow: 3px 3px 1px #43413C; 
         border: solid 1px #43413C;
         padding: 3px; 
         width: 90%; 
@@ -104,7 +100,7 @@ body {
     
     #navbarPlaceholder, #footerPlaceholder {
         width: 50px;
-        margin: auto;
+        margin: 0 auto;
         padding: 0;
     }
 
@@ -138,5 +134,8 @@ body {
     #navbarPlaceholder, #footerPlaceholder {
         width: 80%;
         margin: 50px auto;
+    }
+    .nav-item {
+        font-size: 1.05rem;
     }
 }
