@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>SkillRelay</title>
+    <title>SkillRelay | Profile</title>
     <meta name="comp1800 template" content="SkillRelay">
 
     <!-- Required meta tags -->
@@ -22,13 +22,17 @@
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/load.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <header id="navbarPlaceholder"></header>
     <!-- Content -->
-    <form id="profile-setup" class="p-4 border rounded shadow-sm bg-light">
+    <form id="profile-setup" class="border rounded shadow-sm bg-light">
         <h2 class="text-center mb-4">Profile</h2>
         <fieldset id="profile-fields-info" disabled>
             <div class="row mb-3">
@@ -51,7 +55,7 @@
             <div class="row mb-3">
                 <div class="col-md-12">
                     <label for="introduction" class="form-label">Introduction</label>
-                    <textarea id="profile-intro" name="introduction" class="form-control required" rows="3" placeholder="About myself..."></textarea>
+                    <textarea id="profile-intro" name="introduction" spellcheck="false" class="form-control required" rows="3" placeholder="About myself..."></textarea>
                 </div>
             </div>
         </fieldset>

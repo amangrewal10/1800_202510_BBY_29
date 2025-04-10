@@ -1,11 +1,11 @@
 function loadNavigation(){   
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            console.log($('#navbarPlaceholder').load('/text/header.html'));
-            console.log($('#footerPlaceholder').load('/text/footer.html'));  
+            $('#navbarPlaceholder').load('/text/header.html');
+            $('#footerPlaceholder').load('/text/footer.html');  
         }
         else {
-            console.log($('#footerPlaceholder').load('/text/footer.html'));    
+            $('#footerPlaceholder').load('/text/footer.html');    
         }
            
     }); 
@@ -22,33 +22,45 @@ function logout() {
 }
 // change to ajax later
 
-// function ajaxGET(url, callback) {
+function ajaxGET(url, callback) {
 
-//     const xhr = new XMLHttpRequest();
-//     xhr.onload = function() {
-//         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-//             callback(this.responseText);
-//             console.log(callback);
-//         } else {
-//             console.log(this.status);
-//         }
-//     }
-//     xhr.open("GET", url);
-//     xhr.send();
-// }
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+            callback(this.responseText);
+        } else {
+            console.log(this.status);
+        }
+    }
+    xhr.open("GET", url);
+    xhr.send();
+}
 
-// if (document.querySelector(".workshop-details")) {
-//     ajaxGET("/att", function (data) {
-//         let parsedData = JSON.parse(data);
-//         let str = "<ul>";
-//         for(let i = 0; i < parsedData.length; i++) {
-//             let ride = parsedData[i];
-//             str += "<li class='attraction'>" + `<h2>${ride["name"]}</h2>` + `<p>Attraction number: ${ride["attraction-id"]}</p>` + `<p>Ticket Required: ${ride["ticket"].charAt(0).toUpperCase() + ride["ticket"].substring(1)}</p>`  + `<p>Height requirement: ${ride["height-req"]}cm</p>` + `<p>${ride["description"]}</p>`;
-//         }
-//         str += "</ul>";
-//         document.getElementById("attraction-container").innerHTML = str;
-//     });
-// }
+function loadVariableFormData() {
+    if ($("#location_online")) {
+        let location = "";
+        if ($("input[name='select_location']:checked").val() == "online") {
+            location = "online";
+        } 
+        else if ($("input[name='select_location']:checked").val() == "physical") {
+            location = "physical";
+        }
+        ajaxGET(`/location_data?location=${location}`, function (data) {
+            if ($("#location_data")) {
+                $("#location_data").html(data);
+            }
+        })
+    }
+}
+loadVariableFormData();
+
+function buttonListener() {
+    const radio_location = document.querySelectorAll(".select_location");
+    for (radio of radio_location) {
+        radio.addEventListener("click", loadVariableFormData);
+    }
+}
+buttonListener();
 
 if (document.querySelector(".workshop-details")) {
     const workshopID = new URLSearchParams(window.location.search).get("id");
@@ -85,6 +97,8 @@ if (document.querySelector(".workshop-details")) {
                 };
                 let time = wDoc.data().duration_start + "-" + wDoc.data().duration_end;
                 let summary = wDoc.data().summary;
+                let link_address = wDoc.data().meeting_link_address;
+                let notes = wDoc.data().notes;
 
                 if (document.querySelector(".w_topic")) {
                     document.querySelector(".w_topic").innerHTML = `${topic}`;
@@ -100,6 +114,20 @@ if (document.querySelector(".workshop-details")) {
                 }
                 if (document.querySelector(".w_summary")) {
                     document.querySelector(".w_summary").innerHTML = `${summary}`;
+                }
+                if (document.querySelector(".w_notes")) {
+                    if (notes != undefined) {
+                        document.querySelector(".w_notes").innerHTML = `${notes}`;
+                    } else {
+                        document.querySelector(".w_notes").innerHTML = "No additional notes.";
+                    }
+                }
+                if (document.querySelector(".w_link_address")) {
+                    if(wDoc.data().location == "online") {
+                        document.querySelector(".w_link_address").innerHTML = `Link: <a href="${link_address}" target="_blank">${link_address}</a>`;
+                    } else {
+                        document.querySelector(".w_link_address").innerHTML = `Location: ${link_address}`;
+                    }
                 }
 
                 // Fetch and display reviews for this workshop

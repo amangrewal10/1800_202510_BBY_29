@@ -4,6 +4,7 @@ app.use(express.json());
 const fs = require("fs");
 
 app.use("/js", express.static("./public/js"));
+app.use("/favicon", express.static("./public/favicon"));
 app.use("/css", express.static("./public/css"));
 app.use("/img", express.static("./public/img"));
 app.use("/text", express.static("./public/text"));
@@ -19,7 +20,21 @@ app.use("/main", express.static("./app/html/main.html"));
 app.use("/favourites", express.static("./app/html/favourite_workshops.html"));
 app.use("/workshop-details", express.static("./app/html/workshop_details.html"));
 
-
+app.get("/location_data", function (req, res) {
+    let location = req.query["location"];
+    if (location == "online") {
+        res.setHeader("Content-Type", "text/html");
+        res.send(fs.readFileSync("./public/text/location_online.html", "utf8"));
+    }
+    else if (location == "physical") {
+        res.setHeader("Content-Type", "text/html");
+        res.send(fs.readFileSync("./public/text/location_physical.html", "utf8"));
+    }
+    else {
+        // just send JSON message if failure
+        res.send({ status: "fail", msg: "wrong location or missing location"});
+    }
+});
 
 app.get("/", function(req, res) {
     //console.log(process.env);
@@ -38,12 +53,9 @@ app.use(function (req, res, next) {
 });
 
 // RUN SERVER
-
-
-let host = "192.168.1.69"; // Replace with your actual local IP address
-let port = 8000;
-app.listen(port, host, function () {
-    console.log("Example app listening on " + host + ":" + port + "!");
+const port = process.env.PORT || 8000;
+app.listen(port, function () {
+    console.log("Example app listening on " + port + "!");
 });
 
 //192.168.1.69

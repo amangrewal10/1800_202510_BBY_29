@@ -6,7 +6,7 @@
     /* --color-text-link-hover: black;
     --color-bg-link-hover: #FBCEB1;
     --color-text-link-active: white;
-    --color-bg-link-active: #97233F; */
+    --color-bg-link-active: #97233F;     */
     /* #F18B0E orange */
     /* #43413C grey */
     /* #F0DE39 yellow */
@@ -18,19 +18,39 @@
 html,
 body {
     margin: 0;
+    min-height: 100vh;
+}
+
+body {
+    background-color: rgba(248, 249, 250);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* background-color: #43413C; Light background for contrast */
+    justify-content: space-between;
+    
 }
 
 #banner-image-container {
     position: relative;
     width: 80%;
-    margin: auto;
-    height: 0;
-    padding-top: calc(100% * (80 / 300));
+    margin: 0 auto;
+    height: 250px;
+    box-shadow: 3px 3px 1px #43413C; 
+    border: solid 1.5px #43413C;
+    /* padding-top: calc(100% * (80 / 300)); */
+    padding: 10px;
+    border-radius: 15px;
+    background-image: url(../img/banner-image.jpg);
+    background-size: cover;
+}
 
+@media only screen and (min-width: 900px) {
+    #banner-image-container {
+        height: 300px;
+    }
+
+    .container-favourites {
+        min-height: 700px;
+    }
 }
 
 #banner-image {
@@ -69,14 +89,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 150px;
     /* Adjust based on preference */
     /* background: linear-gradient(135deg, burlywood, beige); */
     background-color: #f8f9fa;
     /* color: #43413C; */
     background: linear-gradient(to right, #007bff, #6610f2);
     color: white;
-    padding: 100px 0;
+    padding: 100px;
     text-align: center;
 }
 
@@ -101,8 +120,8 @@ body {
 }
 
 .feature-card {
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: solid 1px #43413C;
+    box-shadow: 4px 4px 2px #43413C; 
     transition: transform 0.3s ease;
 }
 
@@ -112,7 +131,7 @@ body {
 
 #form-setup {
     width: 80%;
-    margin: auto;
+    margin: 15px auto;
 }
 
 #form-textarea {
@@ -151,19 +170,49 @@ body {
     
 }
 
+#error {
+    list-style-type: none;
+    color: #f04e4e;
+    width: 80%;
+    margin: auto;
+    padding: 0;
+}
 
+.error_sign {
+    color: #f04e4e;
+}
 
-/* -----Setup Form page----- */
-#profile-setup {
+.required_text {
     width: 80%;
     margin: auto;
 }
 
+/* -----Setup Form page----- */
+#profile-setup {
+    width: 80%;
+    margin: 50px auto;
+    padding: 70px 50px;
+}
+
+#profile-fields-info {
+    margin: 30px 0px;
+}
+
+#location_data > input {
+    display: block;
+}
+
+
 /* -----Workshop Details page----- */
 .workshop-details {
     width: 80%;
-    margin: auto;
+    margin: 50px auto;
     padding: 50px;
+}
+
+.w_link_address > a {
+    word-break: break-all; 
+    word-wrap: break-word;
 }
 /* @media only screen and (max-width: 1000px) {
     
@@ -224,22 +273,19 @@ body {
     color: #888;
 }
 
+.btn-success {
+    background-color: #f04e4e;
+    border-color: #f04e4e;
+}
 
-/* Media Query for Tablets & Mobile Devices (max-width: 768px) */
+
+.btn-success:hover {
+    background-color: #43413C;
+}/* Media Query for Tablets & Mobile Devices (max-width: 768px) */
 @media only screen and (max-width: 768px) {
     /* Make containers take up more width */
-    #banner-image-container,
-    .workshop-container,
-    #form-setup,
-    .workshop-details {
-      width: 95%;
-      margin: auto;
-    }
   
     /* Adjust banner image to maintain aspect ratio on smaller screens */
-    #banner-image-container {
-      padding-top: 56.25%; /* 16:9 aspect ratio */
-    }
   
     /* Reduce hero text sizes */
     .hero h1 {
@@ -269,9 +315,9 @@ body {
     }
     
     /* Make sure images and other elements fit comfortably */
-    #banner-image {
+    /* #banner-image {
       object-fit: cover;
-    }
+    } */
   }
   
 

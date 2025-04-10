@@ -32,16 +32,24 @@ function populateSetupForm() {
 populateSetupForm();
 
 
-$("#form-setup").submit(async function(event) {
-    // Check if any required input is empty
-    if ($(".required").val().length === 0) {
-        console.log("enter name");
-        event.preventDefault();
-    } else {
-        event.preventDefault();
+$("#form-setup").submit(async function( event ) {
+    // If .required's value's length is zero(nothing in input)
+    event.preventDefault();
+    const required = $(".required");
+    let valid = true;
+    let error = "";
+    required.each(function() {
+        if ($(this).val().length == 0) {
+            error += `<li>${$(this).attr('name')} field is empty.</li>`;
+            valid = false;
+        }
+    });
+    $("#error").html(error);
+    if (valid == true) {
         var fields = $(this).serializeArray();
-        // Grab data from form
-        for (field of fields) {
+        // grab data from form
+        var location = "online";
+        for (const field of fields) {
             console.log(field.name + " = " + field.value);
             switch (field.name) {
                 case "pref-name":
@@ -65,9 +73,14 @@ $("#form-setup").submit(async function(event) {
                 case "duration-end":
                     var durationEnd = field.value;
                     break;
-                case "meeting-link":
+                case "link":
                     var meetingLink = field.value;
                     break;
+                case "address":
+                    var address = field.value;
+                    location = "physical";
+                case "notes":
+                    var notes = field.value;
                 default:
                     console.log("big problem");
             }
@@ -81,7 +94,9 @@ $("#form-setup").submit(async function(event) {
             summary: summary,
             duration_start: durationStart,
             duration_end: durationEnd,
-            meeting_link: meetingLink,  // Added meeting link field
+            location: location,
+            meeting_link_address: location = "online" ? meetingLink : address,
+            notes: notes,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         }).then((docRef) => {
             currentUserWorkshops = currentUser.collection("created_workshops");

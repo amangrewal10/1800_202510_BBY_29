@@ -40,10 +40,6 @@
     color: black;
 }
 
-body {
-    padding-bottom: 60px; /* Add padding to prevent overlap with the fixed navbar */
-}
-
 .nav-item.dropdown:hover .dropdown-menu {
     display: block; /* Show dropdown menu on hover */
     margin-top: 0; /* Adjust positioning if needed */
@@ -78,7 +74,7 @@ body {
 }
 
 .dropdown-item:hover {
-    background-color: #007bff; /* Highlight background on hover */
+    background-color: #43413C; /* Highlight background on hover */
     color: #ffffff; /* Change text color on hover */
 }
 
@@ -92,28 +88,47 @@ body {
     display: none; /* Ensure no visual remnants of the dropdown sign */
 }
 
-@media only screen and (max-width: 576px) {
-    .navbar {
-        box-shadow: 4px 4px 2px #43413C; 
-        border: solid 1px #43413C;
-        padding: 3px; 
-        width: 90%; 
-        margin: 0 auto; 
-        bottom: 10px;
-    }
+.navbar {
+    box-shadow: 4px 4px 2px #43413C;
+    border: solid 2px #43413C;
+}
+
+.home-link {
+    display: none;
+}
+
+#navbarPlaceholder, #footerPlaceholder {
+    width: 90%;
+    margin: 50px auto;
+}
+
+.navbar-toggler {
+    margin-right: 10px;
+}
+
+.fixed-bottom {
+    bottom: 15px;
+    right: auto;
+    left: auto;
+    width: 90%;
+}
+
+.nav-item {
+    font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 576px) {
     
     #navbarPlaceholder, #footerPlaceholder {
-        width: 50px;
-        margin: auto;
+        margin: 0 auto;
         padding: 0;
-    }
-
-    footer {
-        display: none; /* Hide footer in mobile view */
     }
 
     body {
         padding-bottom: 70px; 
+    }
+    .fixed-bottom {
+        width: 100%;
     }
 }
 
@@ -122,21 +137,26 @@ body {
         position: relative;
         flex-direction: row-reverse;
     } 
+    .nav-item {
+        font-size: 1.2rem;
+    }
 
     #navbarPlaceholder, #footerPlaceholder {
-        width: 100%;
-        margin: auto;
+        margin: 50px auto;
         padding: 0;
     }
 }
 
-@media only screen and (min-width: 768px) {
-    .navbar {
-        box-shadow: 4px 4px 2px #43413C;
-        border: solid 2px #43413C;
-    }
+@media only screen and (min-width: 900px) {
+    
     #navbarPlaceholder, #footerPlaceholder {
         width: 80%;
         margin: 50px auto;
+    }
+    .nav-item {
+        font-size: 1.05rem;
+    }
+    .home-link {
+        display: block;
     }
 }
