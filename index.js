@@ -4,6 +4,7 @@ app.use(express.json());
 const fs = require("fs");
 
 app.use("/js", express.static("./public/js"));
+app.use("/favicon", express.static("./public/favicon"));
 app.use("/css", express.static("./public/css"));
 app.use("/img", express.static("./public/img"));
 app.use("/text", express.static("./public/text"));
