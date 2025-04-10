@@ -60,19 +60,6 @@ function buttonListener() {
 }
 buttonListener();
 
-// if (document.querySelector(".workshop-details")) {
-//     ajaxGET("/att", function (data) {
-//         let parsedData = JSON.parse(data);
-//         let str = "<ul>";
-//         for(let i = 0; i < parsedData.length; i++) {
-//             let ride = parsedData[i];
-//             str += "<li class='attraction'>" + `<h2>${ride["name"]}</h2>` + `<p>Attraction number: ${ride["attraction-id"]}</p>` + `<p>Ticket Required: ${ride["ticket"].charAt(0).toUpperCase() + ride["ticket"].substring(1)}</p>`  + `<p>Height requirement: ${ride["height-req"]}cm</p>` + `<p>${ride["description"]}</p>`;
-//         }
-//         str += "</ul>";
-//         document.getElementById("attraction-container").innerHTML = str;
-//     });
-// }
-
 if (document.querySelector(".workshop-details")) {
     const workshopID = new URLSearchParams(window.location.search).get("id");
     console.log("Workshop ID:", workshopID); // Log the workshop ID for debugging
@@ -108,6 +95,8 @@ if (document.querySelector(".workshop-details")) {
                 };
                 let time = wDoc.data().duration_start + "-" + wDoc.data().duration_end;
                 let summary = wDoc.data().summary;
+                let link_address = wDoc.data().meeting_link_address;
+                let notes = wDoc.data().notes;
 
                 if (document.querySelector(".w_topic")) {
                     document.querySelector(".w_topic").innerHTML = `${topic}`;
@@ -123,6 +112,20 @@ if (document.querySelector(".workshop-details")) {
                 }
                 if (document.querySelector(".w_summary")) {
                     document.querySelector(".w_summary").innerHTML = `${summary}`;
+                }
+                if (document.querySelector(".w_notes")) {
+                    if (notes != undefined) {
+                        document.querySelector(".w_notes").innerHTML = `${notes}`;
+                    } else {
+                        document.querySelector(".w_notes").innerHTML = "No additional notes.";
+                    }
+                }
+                if (document.querySelector(".w_link_address")) {
+                    if(wDoc.data().location == "online") {
+                        document.querySelector(".w_link_address").innerHTML = `Link: <a href="${link_address}" target="_blank">${link_address}</a>`;
+                    } else {
+                        document.querySelector(".w_link_address").innerHTML = `Location: ${link_address}`;
+                    }
                 }
 
                 // Fetch and display reviews for this workshop
